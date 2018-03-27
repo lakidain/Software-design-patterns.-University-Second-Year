@@ -56,7 +56,9 @@ public class Main { //Aqui irá un menu con opciones que irá mostrando en panta
                     IObservador nosubscrita = new Empresa(noempresa);
                     fabrica.desubscribirse(nosubscrita);
                     break;
-                
+                case 5:
+                    fabrica.listarSocios();
+                    break;
             }
         }
     }

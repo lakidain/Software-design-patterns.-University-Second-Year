@@ -103,7 +103,19 @@ public class Fabrica implements ISujeto {  //Para poder apicar el patron Singlet
             }           
         }
     }
-
+    public void listarSocios(){
+        Iterator it = subscriptores.iterator();
+        int c = 0;
+        System.out.println("Listado de empresas:");
+        while(it.hasNext()){
+            Empresa aux =(Empresa) it.next();
+            System.out.print("\t"+aux.getNombre());
+            if(c>3){
+                System.out.println("");
+            }
+            c++;
+        }
+    }
     public void notificarSubscriptores(String aviso) {
         int i;
 
