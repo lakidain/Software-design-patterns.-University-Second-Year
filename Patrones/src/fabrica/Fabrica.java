@@ -76,17 +76,17 @@ public class Fabrica implements ISujeto {  //Para poder apicar el patron Singlet
 
     public void subscribirse(IObservador o) {
         Iterator iterador = this.subscriptores.iterator();
-        boolean encontrado=false;
+        boolean encontrado = false;
         Empresa ao = (Empresa) o;
-        
-        while(iterador.hasNext()){
+
+        while (iterador.hasNext()) {
             Empresa comparar = (Empresa) iterador.next();
-            if(comparar.equals(ao)){
-                encontrado=true;
-            }           
+            if (comparar.equals(ao)) {
+                encontrado = true;
+            }
         }
-        
-        if(encontrado==false){
+
+        if (encontrado == false) {
             this.subscriptores.add(o);
         }
 
@@ -94,28 +94,33 @@ public class Fabrica implements ISujeto {  //Para poder apicar el patron Singlet
 
     public void desubscribirse(IObservador o) {
         Iterator iterador = this.subscriptores.iterator();
-        Empresa ao= (Empresa) o;
-        
-        while(iterador.hasNext()){
+        Empresa ao = (Empresa) o;
+
+        while (iterador.hasNext()) {
             Empresa comparar = (Empresa) iterador.next();
-            if(comparar.equals(ao)){
+            if (comparar.equals(ao)) {
                 iterador.remove();
-            }           
+            }
         }
     }
     public void listarSocios(){
         Iterator it = subscriptores.iterator();
         int c = 0;
-        System.out.println("Listado de empresas:");
-        while(it.hasNext()){
-            Empresa aux =(Empresa) it.next();
-            System.out.print("\t"+aux.getNombre());
-            if(c>3){
-                System.out.println("");
+        if (!subscriptores.isEmpty()) {
+            System.out.println("Listado de empresas:");
+            while (it.hasNext()) {
+                Empresa aux = (Empresa) it.next();
+                System.out.print("\t" + aux.getNombre());
+                if (c > 3) {
+                    System.out.println("");
+                }
+
             }
-            c++;
+        } else {
+            System.out.println("No hay empresas Subscriptas");
         }
     }
+
     public void notificarSubscriptores(String aviso) {
         int i;
 
