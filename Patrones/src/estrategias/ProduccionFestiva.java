@@ -12,7 +12,8 @@ package estrategias;
 import fabrica.*;
 import java.util.*;
 
-public class ProduccionFestiva implements EstrategiaProduccion {    //Necesitamos de esta estrategia para poder cambiar en tiempo real cuando se acerca una festividad
+public class ProduccionFestiva implements EstrategiaProduccion {   
+    //Necesitamos de esta estrategia para poder cambiar en tiempo real cuando se acerca una festividad
 
     private int cantidadProduccion;
     private double porcentajeFallo;
@@ -26,17 +27,18 @@ public class ProduccionFestiva implements EstrategiaProduccion {    //Necesitamo
         ArrayList<Juguete> juguetes = new ArrayList();
         SimpleJugueteFactory factoria = new SimpleJugueteFactory();
         int numRotos = 0;
+
         for (int i = 0; i < cantidadProduccion; i++) {
             Juguete aux = factoria.createJuguete(modelo, porcentajeFallo);
-            juguetes.add(aux);
-            if(aux.isRoto()){
+            if (aux.isRoto()) {
                 numRotos++;
+            } else {
+                juguetes.add(aux);
             }
         }
-        if(numRotos>0){
-            System.out.println("");
+        if (numRotos > 0) {
+            System.out.print("Se han roto: " + numRotos + " juguetes\n");
         }
         return juguetes;
     }
-
 }

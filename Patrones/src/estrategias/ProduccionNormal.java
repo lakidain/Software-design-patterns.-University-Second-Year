@@ -14,29 +14,38 @@ import fabrica.Juguete;
 import java.util.*;
 import fabrica.*;
 
-public class ProduccionNormal implements EstrategiaProduccion{ //Esta estrategia será la estandar
+public class ProduccionNormal implements EstrategiaProduccion { //Esta estrategia será la estandar
+
     private int cantidadProduccion;
     private double porcentajeFallo;
-    
-    public ProduccionNormal(){
-        this.cantidadProduccion=10;
-        this.porcentajeFallo=0.05;
+
+    public ProduccionNormal() {
+        this.cantidadProduccion = 10;
+        this.porcentajeFallo = 0.05;
     }
-    
-    public int getCantidadProduccion(){
+
+    public int getCantidadProduccion() {
         System.out.print("Hemos cambiado la produccion a Normal");
         return this.cantidadProduccion;
     }
-    
+
     public ArrayList<Juguete> producir(String modelo) {
         ArrayList<Juguete> juguetes = new ArrayList();
         SimpleJugueteFactory factoria = new SimpleJugueteFactory();
+        int numRotos = 0;
 
         for (int i = 0; i < cantidadProduccion; i++) {
             Juguete aux = factoria.createJuguete(modelo, porcentajeFallo);
-            juguetes.add(aux);
+            if (aux.isRoto()) {
+                numRotos++;
+            } else {
+                juguetes.add(aux);
+            }
+        }
+        if (numRotos > 0) {
+            System.out.print("Se han roto: " + numRotos + " juguetes\n");
         }
         return juguetes;
     }
-    
+
 }

@@ -7,14 +7,15 @@ package main;
 
 /**
  *
- * @author Ander
+ * @author Andres
  */
 import java.util.*;
 import fabrica.*;
 import estrategias.*;
 import observador.*;
 
-public class Main { //Aqui irá un menu con opciones que irá mostrando en pantalla lo que va sucediendo, simularemos el control del stock desde aqui al igual que la fabricacion
+public class Main { 
+
 
     /**
      * @param args the command line arguments
@@ -24,7 +25,7 @@ public class Main { //Aqui irá un menu con opciones que irá mostrando en panta
         Fabrica fabrica = Fabrica.getInstance();
         EstrategiaProduccion festiva = new ProduccionFestiva();
         EstrategiaProduccion normal = new ProduccionFestiva();
-        
+
         while (numeroIntroducido != 6) {
             Scanner sc = new Scanner(System.in);
             mostrarMenu();
@@ -59,16 +60,23 @@ public class Main { //Aqui irá un menu con opciones que irá mostrando en panta
                 case 5:
                     fabrica.listarSocios();
                     break;
+                default:
+                    if (numeroIntroducido != 6) {
+                        System.out.println("Introduzca un numero valido");
+                    }
+                    break;
             }
         }
     }
-    
+
     public static void mostrarMenu() {
+        System.out.println("######################  MENU  ########################");
         System.out.println("[1] Producir tanda de juguetes");
         System.out.println("[2] Cambiar tipo de producción entre Normal/Festiva");
         System.out.println("[3] Añadir Empresa al boletin");
         System.out.println("[4] Borrar Empresa del boletin");
         System.out.println("[5] Visualizar socios");
         System.out.println("[6] Salir");
+        System.out.println("####################################################");
     }
 }

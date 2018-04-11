@@ -10,6 +10,8 @@ package observador;
  * @author Ander
  */
 public interface ISujeto {
+
     public void subscribirse(IObservador o);
+
     public void desubscribirse(IObservador o);
 }

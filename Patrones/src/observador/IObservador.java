@@ -7,8 +7,9 @@ package observador;
 
 /**
  *
- * @author Ander Lakidain
+ * @author Andres
  */
-public interface IObservador {  
+public interface IObservador {
+
     public void update(String aviso);
 }

@@ -7,11 +7,12 @@ package estrategias;
 
 /**
  *
- * @author Ander
+ * @author Andres
  */
 import fabrica.*;
 import java.util.*;
 
 public interface EstrategiaProduccion {
+
     public ArrayList<Juguete> producir(String modelo);
 }
