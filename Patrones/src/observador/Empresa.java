@@ -20,16 +20,15 @@ public class Empresa implements IObservador {  //Clase creada para el patrón ob
     public void update(String aviso) {
         System.out.println("La empresa " + this.nombre + " ha recibido el aviso: " + aviso); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public String getNombre(){
+
+    public String getNombre() {
         return this.nombre;
     }
 
     public boolean equals(Empresa o) {
-        if(this.nombre.equals(o.getNombre())){
+        if (this.nombre.equals(o.getNombre())) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }

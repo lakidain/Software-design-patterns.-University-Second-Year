@@ -25,12 +25,19 @@ public class ProduccionFestiva implements EstrategiaProduccion {    //Necesitamo
     public ArrayList<Juguete> producir(String modelo) {
         ArrayList<Juguete> juguetes = new ArrayList();
         SimpleJugueteFactory factoria = new SimpleJugueteFactory();
+        int numRotos = 0;
 
         for (int i = 0; i < cantidadProduccion; i++) {
             Juguete aux = factoria.createJuguete(modelo, porcentajeFallo);
-            juguetes.add(aux);
+            if (aux.isRoto()) {
+                numRotos++;
+            } else {
+                juguetes.add(aux);
+            }
+        }
+        if (numRotos > 0) {
+            System.out.print("Se han roto: " + numRotos + " juguetes\n");
         }
         return juguetes;
     }
-
 }

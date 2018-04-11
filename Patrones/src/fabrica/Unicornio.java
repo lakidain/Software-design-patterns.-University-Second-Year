@@ -11,16 +11,15 @@ package fabrica;
  */
 import java.util.Random;
 
-public class Unicornio extends Juguete{
-    private final String name;
-    
-    public Unicornio(/*int numeroSerie,*/double porcentajeFallo){
+public class Unicornio extends Juguete {
+
+    public Unicornio(/*int numeroSerie,*/double porcentajeFallo) {
         Random aleatorio = new Random();
-        if(aleatorio.nextDouble()<porcentajeFallo){
+        if (aleatorio.nextDouble() < porcentajeFallo) {
             this.setRoto(true);
         }
         //this.setNumeroSerie(numeroSerie);
-        this.name="Unicornio";
+        this.setNombre("Unicornio");
         this.setPrecio(10);
     }
 }

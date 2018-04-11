@@ -16,11 +16,11 @@ public class SimpleJugueteFactory {
     public Juguete createJuguete(String type,/*int numeroSerie,*/double porcentajeFallo){
         Juguete juguete=null;
         
-        if(type.equals("Soldado")){
-            juguete= new Soldado(/*numeroSerie,*/porcentajeFallo);
+        if (type.equals("Soldado")) {
+            juguete = new Soldado(/*numeroSerie,*/porcentajeFallo);
         }
-        if(type.equals("Unicornio")){
-            juguete= new Unicornio(/*numeroSerie,*/porcentajeFallo);
+        if (type.equals("Unicornio")) {
+            juguete = new Unicornio(/*numeroSerie,*/porcentajeFallo);
         }
         
         return juguete;

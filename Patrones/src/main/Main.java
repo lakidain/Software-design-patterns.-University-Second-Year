@@ -24,7 +24,7 @@ public class Main { //Aqui irá un menu con opciones que irá mostrando en panta
         Fabrica fabrica = Fabrica.getInstance();
         EstrategiaProduccion festiva = new ProduccionFestiva();
         EstrategiaProduccion normal = new ProduccionFestiva();
-        
+
         while (numeroIntroducido != 6) {
             Scanner sc = new Scanner(System.in);
             mostrarMenu();
@@ -56,13 +56,11 @@ public class Main { //Aqui irá un menu con opciones que irá mostrando en panta
                     IObservador nosubscrita = new Empresa(noempresa);
                     fabrica.desubscribirse(nosubscrita);
                     break;
-                case 5:
-                    fabrica.listarSocios();
-                    break;
+
             }
         }
     }
-    
+
     public static void mostrarMenu() {
         System.out.println("[1] Producir tanda de juguetes");
         System.out.println("[2] Cambiar tipo de producción entre Normal/Festiva");

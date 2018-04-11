@@ -9,6 +9,7 @@ package observador;
  *
  * @author Ander Lakidain
  */
-public interface IObservador {  
+public interface IObservador {
+
     public void update(String aviso);
 }

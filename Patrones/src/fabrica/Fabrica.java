@@ -44,78 +44,84 @@ public class Fabrica implements ISujeto {  //Para poder apicar el patron Singlet
         return instancia;
     }
 
-    public void fabricar(String producto) {
-        if (this.estado instanceof Llamas) {
-            System.out.println("No puede producir con la fabrica en llamas! ¿Quiere llamar a los bomberos? Pulse 1 para llamarlos, otro numero para no llamarlos, la Navidad depende de usted :D");
-            Scanner sc = new Scanner(System.in);
-            int respuesta = sc.nextInt();
-            if (respuesta == 1) {
-                bomberos();
-                System.out.println("Gracias por llamar a los bomberos, has salvado la Navidad :D");
-            }
-        } else {
-            Random dado = new Random();
-            juguetes.addAll(miEstrategia.producir(producto));
-            if (dado.nextDouble() < 0.01) {
-                this.estado = new Llamas();
-            }
-            String aviso = "Tenemos una producción de " + juguetes.size() + " pueden pasar a comprarlos cuando deseen";
-            notificarSubscriptores(aviso);
-        }
-        System.out.println(this.estado.handle());
+    public void añadirJuguetes(String producto) {
+        juguetes.addAll(miEstrategia.producir(producto));
     }
 
-    public void bomberos() {
-        this.estado = new Normal();
-        System.out.println("Los bomberos se han encargado de la emergencia, puede continuar la producción");
+    public int getJuguetesSize() {
+        return juguetes.size();
+    }
+
+    public void fabricar(String producto) {
+        this.estado.handle(producto);
     }
 
     public void cambiarProduccion(EstrategiaProduccion estrategy) {
         this.miEstrategia = estrategy;
     }
 
+    public void cambiarEstado(State estado) {
+        this.estado = estado;
+    }
+
     public void subscribirse(IObservador o) {
         Iterator iterador = this.subscriptores.iterator();
-        boolean encontrado=false;
+        boolean encontrado = false;
         Empresa ao = (Empresa) o;
-        
-        while(iterador.hasNext()){
+
+        while (iterador.hasNext()) {
             Empresa comparar = (Empresa) iterador.next();
-            if(comparar.equals(ao)){
-                encontrado=true;
-            }           
-        }
-        
-        if(encontrado==false){
-            this.subscriptores.add(o);
+            if (comparar.equals(ao)) {
+                encontrado = true;
+            }
         }
 
+        if (encontrado == false) {
+            this.subscriptores.add(o);
+        }
+    }
+
+    public String getModelos() {
+        ArrayList<Juguete> modelo = new ArrayList(this.juguetes);
+        ArrayList numeroModelos = new ArrayList();
+        String mensaje = "";
+
+        Collections.sort(modelo);
+
+        int contador = 1;
+
+        if (modelo.get(0) != null) {
+            String aux = modelo.get(0).getNombre();
+
+            for (int i = 1; i < modelo.size(); i++) {
+                if (modelo.get(i).getNombre().equals(aux)) {
+                    contador++;
+                } else {
+                    mensaje = mensaje + " Modelo: " + aux + " Stock: " + contador;
+                    aux = modelo.get(i).getNombre();
+                    contador = 1;
+                }
+            }
+            mensaje = mensaje + " Modelo: " + aux + " Stock: " + contador;
+        } else {
+            mensaje = mensaje + "\nNo tenemos produccion disponible.";
+        }
+
+        return mensaje;
     }
 
     public void desubscribirse(IObservador o) {
         Iterator iterador = this.subscriptores.iterator();
-        Empresa ao= (Empresa) o;
-        
-        while(iterador.hasNext()){
+        Empresa ao = (Empresa) o;
+
+        while (iterador.hasNext()) {
             Empresa comparar = (Empresa) iterador.next();
-            if(comparar.equals(ao)){
+            if (comparar.equals(ao)) {
                 iterador.remove();
-            }           
-        }
-    }
-    public void listarSocios(){
-        Iterator it = subscriptores.iterator();
-        int c = 0;
-        System.out.println("Listado de empresas:");
-        while(it.hasNext()){
-            Empresa aux =(Empresa) it.next();
-            System.out.print("\t"+aux.getNombre());
-            if(c>3){
-                System.out.println("");
             }
-            c++;
         }
     }
+
     public void notificarSubscriptores(String aviso) {
         int i;
 

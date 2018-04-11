@@ -10,16 +10,16 @@ package fabrica;
  * @author Ander
  */
 import java.util.*;
-public class Soldado extends Juguete{
-    private final String name;
-    
-    public Soldado(/*int numeroSerie,*/double porcentajeFallo){
+
+public class Soldado extends Juguete {
+
+    public Soldado(/*int numeroSerie,*/double porcentajeFallo) {
         Random aleatorio = new Random();
-        if(aleatorio.nextDouble()<porcentajeFallo){
+        if (aleatorio.nextDouble() < porcentajeFallo) {
             this.setRoto(true);
         }
         //this.setNumeroSerie(numeroSerie);
-        this.name="Soldado";
+        this.setNombre("Soldado");
         this.setPrecio(5);
     }
 }

@@ -5,18 +5,36 @@
  */
 package state;
 
+import fabrica.Fabrica;
+import java.util.Random;
+
 /**
  *
  * @author Ander
  */
 public class Normal implements State {
 
-    public Normal(){
+    public Normal() {
     }
-    
-    public String handle() {
-        String mensaje= "La fabrica funciona con normalidad";
-        return mensaje;
+
+    public void handle(String producto) {
+        Fabrica fabrica = Fabrica.getInstance();
+        fabrica.añadirJuguetes(producto);
+
+        enLlamas(fabrica);
+        String aviso = "Tenemos una producción de " + fabrica.getJuguetesSize() + ".De los cuales tenemos:" + fabrica.getModelos() + ", pueden pasar a comprarlos cuando deseen";
+        fabrica.notificarSubscriptores(aviso);
+
+        //System.out.print("La fabrica funciona con normalidad");
     }
-    
+
+    public void enLlamas(Fabrica fabrica) {
+        Random dado = new Random();
+        State estado = new Llamas();
+
+        if (dado.nextDouble() < 0.10) {
+            fabrica.cambiarEstado(estado);
+        }
+    }
+
 }

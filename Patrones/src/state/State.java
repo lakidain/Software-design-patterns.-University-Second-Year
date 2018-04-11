@@ -10,5 +10,6 @@ package state;
  * @author Ander
  */
 public interface State {
-    public String handle();
+
+    public void handle(String producto);
 }
