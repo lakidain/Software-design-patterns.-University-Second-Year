@@ -7,7 +7,7 @@ package observador;
 
 /**
  *
- * @author Ander Lakidain
+ * @author Andres
  */
 public interface IObservador {
 

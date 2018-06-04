@@ -7,7 +7,7 @@ package estrategias;
 
 /**
  *
- * @author Ander
+ * @author Andres
  */
 import fabrica.*;
 import java.util.*;

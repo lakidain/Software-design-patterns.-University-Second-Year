@@ -15,24 +15,26 @@ import java.util.Random;
 public class Normal implements State {
 
     public Normal() {
+        System.out.println("La fabrica se encuentra en estado normal, puede producir");
     }
 
     public void handle(String producto) {
         Fabrica fabrica = Fabrica.getInstance();
-        fabrica.añadirJuguetes(producto);
+        fabrica.addJuguetes(producto);
 
         enLlamas(fabrica);
-        String aviso = "Tenemos una producción de " + fabrica.getJuguetesSize() + ".De los cuales tenemos:" + fabrica.getModelos() + ", pueden pasar a comprarlos cuando deseen";
+        String aviso = "Tenemos una producción de " + fabrica.getJuguetesSize() 
+                + ".De los cuales tenemos:" + fabrica.getModelos() +
+                ", pueden pasar a comprarlos cuando deseen";
         fabrica.notificarSubscriptores(aviso);
 
-        //System.out.print("La fabrica funciona con normalidad");
     }
 
     public void enLlamas(Fabrica fabrica) {
         Random dado = new Random();
         State estado = new Llamas();
 
-        if (dado.nextDouble() < 0.10) {
+        if (dado.nextDouble() < 0.90) {
             fabrica.cambiarEstado(estado);
         }
     }

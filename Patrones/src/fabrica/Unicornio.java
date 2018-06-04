@@ -13,12 +13,11 @@ import java.util.Random;
 
 public class Unicornio extends Juguete {
 
-    public Unicornio(/*int numeroSerie,*/double porcentajeFallo) {
+    public Unicornio(double porcentajeFallo) {
         Random aleatorio = new Random();
         if (aleatorio.nextDouble() < porcentajeFallo) {
             this.setRoto(true);
         }
-        //this.setNumeroSerie(numeroSerie);
         this.setNombre("Unicornio");
         this.setPrecio(10);
     }

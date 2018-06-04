@@ -9,7 +9,8 @@ package observador;
  *
  * @author Ander
  */
-public class Empresa implements IObservador {  //Clase creada para el patrón observador por ejemplo cuando lleguemos a x stock le avisaremos para enviarselo
+public class Empresa implements IObservador {  
+//Clase creada para el patrón observador notificaremos a las empresas cuando se produzca nuevo stock
 
     private String nombre;
 
@@ -18,7 +19,7 @@ public class Empresa implements IObservador {  //Clase creada para el patrón ob
     }
 
     public void update(String aviso) {
-        System.out.println("La empresa " + this.nombre + " ha recibido el aviso: " + aviso); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("La empresa " + this.nombre + " ha recibido el aviso: " + aviso); 
     }
 
     public String getNombre() {

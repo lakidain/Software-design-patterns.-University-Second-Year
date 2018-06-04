@@ -9,12 +9,11 @@ package fabrica;
  *
  * @author Ander
  */
-public abstract class Juguete implements Comparable {  //Para poder aplicar el patron factoria
+public abstract class Juguete implements Comparable {  
 
     private int precio;
     private String nombre;
     private boolean roto;
-    //private int numSerie;
 
     public int getPrecio() {
         return this.precio;
@@ -41,13 +40,6 @@ public abstract class Juguete implements Comparable {  //Para poder aplicar el p
     }
 
 
-    /*public int getNumeroSerie(){
-        return this.numSerie;
-    }
-    
-    public void setNumeroSerie(int numeroSerie){
-        this.numSerie=numeroSerie;
-    }*/
     public int compareTo(Object t) {
         Juguete comparar = (Juguete) t;
         int cmp = getNombre().compareTo(comparar.getNombre());

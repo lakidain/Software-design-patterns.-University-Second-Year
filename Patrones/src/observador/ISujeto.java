@@ -14,4 +14,6 @@ public interface ISujeto {
     public void subscribirse(IObservador o);
 
     public void desubscribirse(IObservador o);
+
+    public void notificarSubscriptores(String aviso);
 }

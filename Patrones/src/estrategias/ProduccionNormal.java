@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package estrategias;
 
 import fabrica.Juguete;
@@ -22,11 +23,6 @@ public class ProduccionNormal implements EstrategiaProduccion { //Esta estrategi
     public ProduccionNormal() {
         this.cantidadProduccion = 10;
         this.porcentajeFallo = 0.05;
-    }
-
-    public int getCantidadProduccion() {
-        System.out.print("Hemos cambiado la produccion a Normal");
-        return this.cantidadProduccion;
     }
 
     public ArrayList<Juguete> producir(String modelo) {

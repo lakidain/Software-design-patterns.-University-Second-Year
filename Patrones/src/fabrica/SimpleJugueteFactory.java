@@ -10,17 +10,16 @@ package fabrica;
  * @author Ander
  */
 public class SimpleJugueteFactory {
-    public SimpleJugueteFactory(){
-    }
+    //Patron factoria
     
-    public Juguete createJuguete(String type,/*int numeroSerie,*/double porcentajeFallo){
+    public Juguete createJuguete(String type,double porcentajeFallo){
         Juguete juguete=null;
         
         if (type.equals("Soldado")) {
-            juguete = new Soldado(/*numeroSerie,*/porcentajeFallo);
+            juguete = new Soldado(porcentajeFallo);
         }
         if (type.equals("Unicornio")) {
-            juguete = new Unicornio(/*numeroSerie,*/porcentajeFallo);
+            juguete = new Unicornio(porcentajeFallo);
         }
         
         return juguete;

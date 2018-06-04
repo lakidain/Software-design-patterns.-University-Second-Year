@@ -12,7 +12,8 @@ package estrategias;
 import fabrica.*;
 import java.util.*;
 
-public class ProduccionFestiva implements EstrategiaProduccion {    //Necesitamos de esta estrategia para poder cambiar en tiempo real cuando se acerca una festividad
+public class ProduccionFestiva implements EstrategiaProduccion {   
+    //Necesitamos de esta estrategia para poder cambiar en tiempo real cuando se acerca una festividad
 
     private int cantidadProduccion;
     private double porcentajeFallo;

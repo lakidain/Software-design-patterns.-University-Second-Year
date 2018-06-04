@@ -15,11 +15,15 @@ import java.util.*;
 import state.*;
 
 //Patron factoria
-public class Fabrica implements ISujeto {  //Para poder apicar el patron Singleton con la factoria vamos a tener que meterle atributos porque si no con hacerla static bastaria, llamariamos a los metodos y se acabo
+public class Fabrica implements ISujeto {
+
+    /*Para poder apicar el patron Singleton con la factoria vamos a tener que
+    meterle atributos porque si no con hacerla static bastaria, llamariamos a 
+    los metodos y se acabo
+     */
 
     private State estado;
     private ArrayList<Juguete> juguetes;
-    private SimpleJugueteFactory factoria;
     private ArrayList<IObservador> subscriptores;
     private EstrategiaProduccion miEstrategia;
     private static Fabrica instancia;
@@ -27,7 +31,6 @@ public class Fabrica implements ISujeto {  //Para poder apicar el patron Singlet
     protected Fabrica() {
         this.juguetes = new ArrayList();
         this.subscriptores = new ArrayList();
-        this.factoria = new SimpleJugueteFactory();
         this.miEstrategia = new ProduccionNormal();
         this.estado = new Normal();
     }
@@ -36,7 +39,10 @@ public class Fabrica implements ISujeto {  //Para poder apicar el patron Singlet
         return this.miEstrategia;
     }
 
-    public static Fabrica getInstance() { //Fabrica.getInstance()patron singleton, no podemos dejarlo como static porque entonces no podriamos acceder a los atributos de la clase
+    public static Fabrica getInstance() {
+        /*Fabrica.getInstance()patron singleton, no podemos dejarlo como static
+        porque entonces no podriamos acceder a los atributos de la clase
+         */
         if (instancia == null) {
             instancia = new Fabrica();
         }
@@ -44,7 +50,7 @@ public class Fabrica implements ISujeto {  //Para poder apicar el patron Singlet
         return instancia;
     }
 
-    public void añadirJuguetes(String producto) {
+    public void addJuguetes(String producto) {
         juguetes.addAll(miEstrategia.producir(producto));
     }
 
@@ -62,6 +68,26 @@ public class Fabrica implements ISujeto {  //Para poder apicar el patron Singlet
 
     public void cambiarEstado(State estado) {
         this.estado = estado;
+    }
+
+    public void listarSocios() {
+        Iterator it = subscriptores.iterator();
+        int c = 1;
+        if (!subscriptores.isEmpty()) {
+            System.out.println("Listado de empresas:");
+            while (it.hasNext()) {
+                Empresa aux = (Empresa) it.next();
+                System.out.print("\t" + aux.getNombre());
+                if (c % 3 == 0) {
+                    System.out.println();
+                }
+                c++;
+
+            }
+            System.out.println();
+        } else {
+            System.out.println("No hay empresas Subscriptas");
+        }
     }
 
     public void subscribirse(IObservador o) {

@@ -13,12 +13,11 @@ import java.util.*;
 
 public class Soldado extends Juguete {
 
-    public Soldado(/*int numeroSerie,*/double porcentajeFallo) {
+    public Soldado(double porcentajeFallo) {
         Random aleatorio = new Random();
         if (aleatorio.nextDouble() < porcentajeFallo) {
             this.setRoto(true);
         }
-        //this.setNumeroSerie(numeroSerie);
         this.setNombre("Soldado");
         this.setPrecio(5);
     }
